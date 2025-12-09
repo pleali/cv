@@ -424,51 +424,18 @@
 
         /* Experience Timeline */
         .timeline {
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom,
-                #00d4aa 0%,
-                #7c3aed 15%,
-                #ff6b35 35%,
-                #2b5fcc 55%,
-                #0080ff 75%,
-                #ff9500 100%
-            );
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
         }
 
         .timeline-item {
             position: relative;
-            padding-bottom: 48px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -36px;
-            top: 6px;
-            width: 14px;
-            height: 14px;
-            background: var(--bg-primary);
-            border: 3px solid var(--era-color, var(--accent));
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--era-color, var(--accent));
         }
 
         /* === ÉPOQUES TECHNOLOGIQUES === */
 
         /* Era: Modern AI (2012-Present) */
-        .era-ai {
-            --era-color: #00d4aa;
-        }
         .era-ai .timeline-header {
             background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
             padding: 16px;
@@ -493,9 +460,6 @@
         }
 
         /* Era: Web 2.0 (2004-2012) */
-        .era-web2 {
-            --era-color: #ff6b35;
-        }
         .era-web2 .timeline-header {
             background: linear-gradient(180deg, #2a2a3a 0%, #1a1a24 100%);
             padding: 16px;
@@ -524,9 +488,6 @@
         }
 
         /* Era: Windows XP (2001-2004) */
-        .era-winxp {
-            --era-color: #2b5fcc;
-        }
         .era-winxp .timeline-header {
             background: linear-gradient(180deg, #4a90d9 0%, #2b5fcc 100%);
             padding: 16px;
@@ -547,9 +508,6 @@
         }
 
         /* Era: Windows 95/98 (1996-2001) */
-        .era-win95 {
-            --era-color: #0080ff;
-        }
         .era-win95 .timeline-header {
             background: #c0c0c0;
             padding: 0;
@@ -581,9 +539,6 @@
         }
 
         /* Era: Terminal CRT (1986-1996) */
-        .era-terminal {
-            --era-color: #ff9500;
-        }
         .era-terminal .timeline-header {
             background: #0a0a0a;
             padding: 16px;
@@ -849,9 +804,6 @@
                 justify-content: center;
             }
 
-            .timeline {
-                padding-left: 30px;
-            }
 
             .timeline-header {
                 flex-direction: column;
