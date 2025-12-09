@@ -1,0 +1,22 @@
+# Fichiers temporaires Office (Word, Excel, PowerPoint)
+~$*
+*.tmp
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*~
+
+# Thumbs Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Dossiers système
+.Spotlight-V100
+.Trashes

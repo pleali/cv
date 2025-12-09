@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paul Leali - Responsable Technique, Expert Delphi & Cloud, DevOps. Plus de 30 ans d'expérience en développement logiciel.">
+    <meta name="keywords" content="Delphi, AWS, DevOps, Spring Boot, Java, Chiffrement, Sécurité, Cloud, Backend, Lyon, France">
+    <title>Paul Leali | Expert Technique & Cloud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --accent: #00d4aa;
+            --accent-glow: rgba(0, 212, 170, 0.15);
+            --accent-secondary: #7c3aed;
+            --text-primary: #f0f0f5;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --border: #2a2a3a;
+            --gradient-1: linear-gradient(135deg, #00d4aa 0%, #7c3aed 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-orb {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .glow-orb-1 { top: -200px; right: -200px; }
+        .glow-orb-2 { bottom: -300px; left: -200px; animation-delay: -10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 30px) scale(1.1); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header / Hero */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .hero-text .tagline {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.95rem;
+            color: var(--accent);
+            margin-bottom: 32px;
+            padding: 12px 20px;
+            background: var(--accent-glow);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .contact-link svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent);
+        }
+
+        .hero-photo {
+            position: relative;
+        }
+
+        .hero-photo img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid var(--border);
+            filter: grayscale(20%);
+            transition: all 0.4s ease;
+        }
+
+        .hero-photo:hover img {
+            filter: grayscale(0%);
+            border-color: var(--accent);
+        }
+
+        .hero-photo::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* Section styling */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .section-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-card h3 span {
+            font-size: 1.4rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            padding: 6px 14px;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag.highlight {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--accent-secondary), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 48px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            background: var(--bg-primary);
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-company {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .timeline-period {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            padding: 4px 12px;
+            background: var(--accent-glow);
+            border-radius: 4px;
+        }
+
+        .timeline-role {
+            font-size: 1.05rem;
+            color: var(--accent-secondary);
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .timeline-description li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .timeline-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .timeline-tech span {
+            padding: 4px 10px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-secondary);
+            transform: translateY(-4px);
+        }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-card h3 svg {
+            color: var(--accent);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .education-item {
+            display: flex;
+            gap: 20px;
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            border-color: var(--accent);
+        }
+
+        .education-year {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .education-content h4 {
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .education-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .education-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-top: 8px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-photo {
+                order: -1;
+                margin: 0 auto;
+            }
+
+            .hero-photo img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                color: #1a1a1a;
+            }
+            
+            .bg-grid, .glow-orb {
+                display: none;
+            }
+            
+            .contact-link, .skill-card, .project-card, .education-item {
+                background: #f5f5f5;
+                border-color: #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+
+    <div class="container">
+        <!-- HEADER / HERO -->
+        <header>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Paul LEALI</h1>
+                    <p class="subtitle">Responsable Technique • Expert Delphi & Cloud • DevOps</p>
+                    <p class="tagline">// 30+ ans d'expertise • Du code assembleur au cloud AWS</p>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:p.leali@free.fr" class="contact-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            p.leali@free.fr
+                        </a>
+                        <a href="tel:+33661469682" class="contact-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            06 61 46 96 82
+                        </a>
+                        <a href="https://github.com/pleali" target="_blank" class="contact-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="https://rapidocloud.net" target="_blank" class="contact-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                            </svg>
+                            RapidoCloud.net
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-photo">
+                    <img src="photo-placeholder.jpg" alt="Paul Leali" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </header>
+
+        <!-- COMPÉTENCES -->
+        <section id="competences">
+            <div class="section-header">
+                <span class="section-number">01.</span>
+                <h2 class="section-title">Compétences</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><span>🔐</span> Sécurité & Chiffrement</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">Chiffrement end-to-end</span>
+                        <span class="skill-tag highlight">Sauvegarde sécurisée</span>
+                        <span class="skill-tag">HDS</span>
+                        <span class="skill-tag">Protection des données</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3><span>☁️</span> Cloud & DevOps</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">AWS (EC2, S3, RDS)</span>
+                        <span class="skill-tag highlight">Docker</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3><span>💻</span> Développement</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">Delphi (30 ans)</span>
+                        <span class="skill-tag ">Spring Boot</span>
+                        <span class="skill-tag highlight">Hibernate</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">PHP</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3><span>🗄️</span> Bases de données</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag  highlight">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">Interbase</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3><span>🔧</span> Expertise rare</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">Assembleur x86/x64</span>
+                        <span class="skill-tag highlight">MQTT / IoT</span>
+                        <span class="skill-tag">COM/DCOM</span>
+                        <span class="skill-tag">Protocoles bas niveau</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3><span>🤖</span> Outils modernes</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">Claude Code</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Eclipse</span>
+                        <span class="skill-tag">Delphi IDE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPÉRIENCE -->
+        <section id="experience">
+            <div class="section-header">
+                <span class="section-number">02.</span>
+                <h2 class="section-title">Expérience</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-company">BUSS - RapidoBackup / RapidoCloud</span>
+                        <span class="timeline-period">2012 — Présent</span>
+                    </div>
+                    <p class="timeline-role">Responsable Technique</p>
+                    <ul class="timeline-description">
+                        <li>Architecte et développeur principal de la solution de sauvegarde cloud sécurisée</li>
+                        <li>Mise en place de l'infrastructure DevOps complète (AWS, Docker, CI/CD)</li>
+                        <li>Développement du système de chiffrement de données end-to-end</li>
+                        <li>Réalisation du site vitrine RapidoCloud.net et pilotage des campagnes marketing</li>
+                    </ul>
+                    <div class="timeline-tech">
+                        <span>AWS</span>
+                        <span>Java</span>
+                        <span>Spring Boot</span>
+                        <span>Delphi</span>
+                        <span>Docker</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-company">MICROCONCEPT (Groupe SOFTWAYMEDICAL)</span>
+                        <span class="timeline-period">2004 — 2012</span>
+                    </div>
+                    <p class="timeline-role">Responsable Pôle R&D</p>
+                    <ul class="timeline-description">
+                        <li>Direction d'une équipe de développement dans le secteur de la santé</li>
+                        <li>Pilotage des projets d'innovation et veille technologique</li>
+                        <li>Définition de l'architecture logicielle des produits</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-company">CSK Santé (devenu Maidis)</span>
+                        <span class="timeline-period">2001 — 2004</span>
+                    </div>
+                    <p class="timeline-role">Responsable Développements SESAM-Vitale</p>
+                    <ul class="timeline-description">
+                        <li>Lead technique sur l'évolution du système national de santé</li>
+                        <li>Architecture et développement des modules critiques</li>
+                    </ul>
+                    <div class="timeline-tech">
+                        <span>Visual C++</span>
+                        <span>MFC</span>
+                        <span>COM/DCOM</span>
+                        <span>MSDE</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-company">LOGUN (Groupe MICROCONCEPT)</span>
+                        <span class="timeline-period">1996 — 2001</span>
+                    </div>
+                    <p class="timeline-role">Chef de Projets</p>
+                    <ul class="timeline-description">
+                        <li>Production de logiciels pour professionnels de santé</li>
+                        <li>Intégration pionnière du système SESAM-Vitale</li>
+                        <li>Développement clients POP/SMTP pour transmission IP</li>
+                    </ul>
+                    <div class="timeline-tech">
+                        <span>Delphi 2-5</span>
+                        <span>C++</span>
+                        <span>Interbase</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-company">MICROCONCEPT / S.INDUSTRIE</span>
+                        <span class="timeline-period">1986 — 1996</span>
+                    </div>
+                    <p class="timeline-role">Concepteur / Développeur</p>
+                    <ul class="timeline-description">
+                        <li>Développement bas niveau en Assembleur x86, C, C++, Pascal</li>
+                        <li>Création de logiciels de gestion et transmission de données médicales</li>
+                        <li>Pilotage direct modem et protocoles Xmodem</li>
+                    </ul>
+                    <div class="timeline-tech">
+                        <span>Assembleur x86</span>
+                        <span>C</span>
+                        <span>C++</span>
+                        <span>Pascal</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJETS OPEN SOURCE -->
+        <section id="projets">
+            <div class="section-header">
+                <span class="section-number">03.</span>
+                <h2 class="section-title">Projets Open Source</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        delphi-mqtt-client
+                    </h3>
+                    <p>Client MQTT v5 multithread pour Delphi. Implémentation complète du protocole avec support QoS, retain, et reconnexion automatique.</p>
+                    <a href="https://github.com/pleali/delphi-mqtt-client" target="_blank" class="project-link">
+                        Voir sur GitHub →
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        delphi-logging-facade
+                    </h3>
+                    <p>Façade de logging inspirée de log4j pour Delphi. API unifiée compatible avec différents backends de logging.</p>
+                    <a href="https://github.com/pleali/delphi-logging-facade" target="_blank" class="project-link">
+                        Voir sur GitHub →
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        jsonrpc-mqtt
+                    </h3>
+                    <p>Librairie Java et Delphi pour JSON-RPC sur MQTT ou IPC/Named Pipes. Communication inter-processus moderne et efficace.</p>
+                    <a href="https://github.com/pleali/jsonrpc-mqtt" target="_blank" class="project-link">
+                        Voir sur GitHub →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMATION -->
+        <section id="formation">
+            <div class="section-header">
+                <span class="section-number">04.</span>
+                <h2 class="section-title">Formation</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="education-grid">
+                <div class="education-item">
+                    <span class="education-year">1993</span>
+                    <div class="education-content">
+                        <h4>DEA Informatique, option Architecture</h4>
+                        <p>IFSIC — Rennes</p>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <span class="education-year">1992</span>
+                    <div class="education-content">
+                        <h4>Maîtrise Architecture des Machines Informatiques</h4>
+                        <p>IFSIC — Rennes</p>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <span class="education-year">1990</span>
+                    <div class="education-content">
+                        <h4>DUT Génie Électrique, option Automatismes</h4>
+                        <p>IUT — Le Creusot</p>
+                        <span class="education-badge">Major de promotion</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>© 2025 Paul Leali — Villefontaine, France</p>
+            <p style="margin-top: 8px; font-size: 0.8rem;">Anglais technique • Disponible pour nouveaux défis</p>
+        </footer>
+    </div>
+</body>
+</html>
