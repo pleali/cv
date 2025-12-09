@@ -317,7 +317,14 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, var(--accent), var(--accent-secondary), transparent);
+            background: linear-gradient(to bottom,
+                #00d4aa 0%,
+                #7c3aed 15%,
+                #ff6b35 35%,
+                #2b5fcc 55%,
+                #0080ff 75%,
+                #ff9500 100%
+            );
         }
 
         .timeline-item {
@@ -333,8 +340,199 @@
             width: 14px;
             height: 14px;
             background: var(--bg-primary);
-            border: 3px solid var(--accent);
+            border: 3px solid var(--era-color, var(--accent));
             border-radius: 50%;
+            box-shadow: 0 0 10px var(--era-color, var(--accent));
+        }
+
+        /* === ÉPOQUES TECHNOLOGIQUES === */
+
+        /* Era: Modern AI (2012-Present) */
+        .era-ai {
+            --era-color: #00d4aa;
+        }
+        .era-ai .timeline-header {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+            padding: 16px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+        }
+        .era-ai .timeline-period {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+            color: white;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+        .era-ai .timeline-company {
+            background: linear-gradient(90deg, #00d4aa, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(0, 212, 170, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(0, 212, 170, 0.8); }
+        }
+
+        /* Era: Web 2.0 (2004-2012) */
+        .era-web2 {
+            --era-color: #ff6b35;
+        }
+        .era-web2 .timeline-header {
+            background: linear-gradient(180deg, #2a2a3a 0%, #1a1a24 100%);
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid #ff6b35;
+            position: relative;
+            overflow: hidden;
+        }
+        .era-web2 .timeline-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            border-radius: 10px 10px 0 0;
+        }
+        .era-web2 .timeline-period {
+            background: linear-gradient(180deg, #ff8f5f 0%, #ff6b35 100%);
+            color: white;
+            border-radius: 20px;
+        }
+        .era-web2 .timeline-company {
+            color: #ff6b35;
+        }
+
+        /* Era: Windows XP (2001-2004) */
+        .era-winxp {
+            --era-color: #2b5fcc;
+        }
+        .era-winxp .timeline-header {
+            background: linear-gradient(180deg, #4a90d9 0%, #2b5fcc 100%);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #6ba5e7;
+        }
+        .era-winxp .timeline-period {
+            background: #4caf50;
+            color: white;
+            border-radius: 3px;
+        }
+        .era-winxp .timeline-company {
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .era-winxp .timeline-role {
+            color: #a8d4ff;
+        }
+
+        /* Era: Windows 95/98 (1996-2001) */
+        .era-win95 {
+            --era-color: #0080ff;
+        }
+        .era-win95 .timeline-header {
+            background: #c0c0c0;
+            padding: 0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+        }
+        .era-win95 .timeline-header::before {
+            content: '';
+            display: block;
+            background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+            padding: 4px 8px;
+            margin-bottom: 8px;
+        }
+        .era-win95 .timeline-company {
+            color: #000080;
+            padding: 8px;
+            font-family: 'Space Mono', monospace;
+        }
+        .era-win95 .timeline-period {
+            background: #000080;
+            color: white;
+            border-radius: 0;
+            font-weight: bold;
+            margin: 8px;
+        }
+        .era-win95 .timeline-role {
+            color: #000080;
+            padding: 0 8px 8px;
+        }
+
+        /* Era: Terminal CRT (1986-1996) */
+        .era-terminal {
+            --era-color: #ff9500;
+        }
+        .era-terminal .timeline-header {
+            background: #0a0a0a;
+            padding: 16px;
+            border: 2px dashed #ff9500;
+            position: relative;
+            overflow: hidden;
+        }
+        .era-terminal .timeline-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 149, 0, 0.03) 2px,
+                rgba(255, 149, 0, 0.03) 4px
+            );
+            pointer-events: none;
+        }
+        .era-terminal .timeline-company {
+            font-family: 'Space Mono', monospace;
+            color: #ff9500;
+            text-shadow: 0 0 10px #ff9500, 0 0 20px #ff9500;
+            letter-spacing: 2px;
+        }
+        .era-terminal .timeline-period {
+            background: transparent;
+            border: 1px solid #ff9500;
+            color: #ff9500;
+            font-family: 'Space Mono', monospace;
+            text-shadow: 0 0 5px #ff9500;
+        }
+        .era-terminal .timeline-role {
+            color: #ff9500;
+            opacity: 0.8;
+            font-family: 'Space Mono', monospace;
+        }
+        .era-terminal .timeline-description li::before {
+            content: '>';
+            color: #ff9500;
+        }
+        .era-terminal .timeline-tech span {
+            background: transparent;
+            border: 1px solid #ff9500;
+            color: #ff9500;
+        }
+
+        /* Era icons styling */
+        .era-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .era-ai .era-icon { color: #00d4aa; }
+        .era-web2 .era-icon { color: #ff6b35; }
+        .era-winxp .era-icon { color: white; }
+        .era-win95 .era-icon { color: #000080; }
+        .era-terminal .era-icon { color: #ff9500; filter: drop-shadow(0 0 5px #ff9500); }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .era-ai .timeline-period { animation: none; }
         }
 
         .timeline-header {
@@ -693,9 +891,10 @@
             </div>
 
             <div class="timeline">
-                <div class="timeline-item">
+                <!-- Era: Modern AI (2012-Present) -->
+                <div class="timeline-item era-ai">
                     <div class="timeline-header">
-                        <span class="timeline-company">BUSS - RapidoBackup / RapidoCloud</span>
+                        <span class="timeline-company"><i data-lucide="sparkles" class="era-icon"></i>BUSS - RapidoBackup / RapidoCloud</span>
                         <span class="timeline-period">2012 — Présent</span>
                     </div>
                     <p class="timeline-role">Responsable Technique</p>
@@ -715,9 +914,10 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <!-- Era: Web 2.0 (2004-2012) -->
+                <div class="timeline-item era-web2">
                     <div class="timeline-header">
-                        <span class="timeline-company">MICROCONCEPT (Groupe SOFTWAYMEDICAL)</span>
+                        <span class="timeline-company"><i data-lucide="lightbulb" class="era-icon"></i>MICROCONCEPT (Groupe SOFTWAYMEDICAL)</span>
                         <span class="timeline-period">2004 — 2012</span>
                     </div>
                     <p class="timeline-role">Responsable Pôle R&D</p>
@@ -728,9 +928,10 @@
                     </ul>
                 </div>
 
-                <div class="timeline-item">
+                <!-- Era: Windows XP (2001-2004) -->
+                <div class="timeline-item era-winxp">
                     <div class="timeline-header">
-                        <span class="timeline-company">CSK Santé (devenu Maidis)</span>
+                        <span class="timeline-company"><i data-lucide="shield" class="era-icon"></i>CSK Santé (devenu Maidis)</span>
                         <span class="timeline-period">2001 — 2004</span>
                     </div>
                     <p class="timeline-role">Responsable Développements SESAM-Vitale</p>
@@ -746,9 +947,10 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <!-- Era: Windows 95/98 (1996-2001) -->
+                <div class="timeline-item era-win95">
                     <div class="timeline-header">
-                        <span class="timeline-company">LOGUN (Groupe MICROCONCEPT)</span>
+                        <span class="timeline-company"><i data-lucide="monitor" class="era-icon"></i>LOGUN (Groupe MICROCONCEPT)</span>
                         <span class="timeline-period">1996 — 2001</span>
                     </div>
                     <p class="timeline-role">Chef de Projets</p>
@@ -764,9 +966,10 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <!-- Era: Terminal CRT (1986-1996) -->
+                <div class="timeline-item era-terminal">
                     <div class="timeline-header">
-                        <span class="timeline-company">MICROCONCEPT / S.INDUSTRIE</span>
+                        <span class="timeline-company"><i data-lucide="terminal" class="era-icon"></i>MICROCONCEPT / S.INDUSTRIE</span>
                         <span class="timeline-period">1986 — 1996</span>
                     </div>
                     <p class="timeline-role">Concepteur / Développeur</p>
