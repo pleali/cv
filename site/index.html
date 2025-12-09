@@ -202,11 +202,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: contrast(1.1) saturate(0.8);
-            animation: crt-flicker 0.1s infinite;
+            /* Filtre phosphore ambre années 80 */
+            filter: sepia(100%) saturate(300%) brightness(0.9) hue-rotate(-10deg) contrast(1.2);
+            animation: crt-instability 0.05s infinite;
         }
 
-        /* CRT Scanlines */
+        /* CRT Scanlines épaisses style années 80 */
         .monitor-screen::before {
             content: '';
             position: absolute;
@@ -217,15 +218,16 @@
             background: repeating-linear-gradient(
                 0deg,
                 transparent,
-                transparent 2px,
-                rgba(0, 0, 0, 0.1) 2px,
-                rgba(0, 0, 0, 0.1) 4px
+                transparent 1px,
+                rgba(0, 0, 0, 0.4) 1px,
+                rgba(0, 0, 0, 0.4) 3px
             );
             pointer-events: none;
             z-index: 2;
+            animation: scanline-scroll 10s linear infinite;
         }
 
-        /* CRT Glow effect */
+        /* CRT Vignette + lueur ambre */
         .monitor-screen::after {
             content: '';
             position: absolute;
@@ -233,16 +235,65 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.3) 100%);
+            background:
+                radial-gradient(ellipse at center, rgba(255, 149, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%);
             pointer-events: none;
             z-index: 3;
         }
 
-        /* CRT Flicker animation */
-        @keyframes crt-flicker {
-            0% { opacity: 0.98; }
-            50% { opacity: 1; }
-            100% { opacity: 0.98; }
+        /* Animation instabilité CRT */
+        @keyframes crt-instability {
+            0% {
+                transform: translate(0, 0) skewX(0deg);
+                opacity: 1;
+            }
+            25% {
+                transform: translate(-0.5px, 0) skewX(0.02deg);
+                opacity: 0.98;
+            }
+            50% {
+                transform: translate(0.5px, 0.5px) skewX(-0.02deg);
+                opacity: 1;
+            }
+            75% {
+                transform: translate(0, -0.5px) skewX(0.01deg);
+                opacity: 0.97;
+            }
+            100% {
+                transform: translate(0, 0) skewX(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Défilement subtil des scanlines */
+        @keyframes scanline-scroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100px; }
+        }
+
+        /* Glitch occasionnel */
+        .monitor-screen img {
+            animation: crt-instability 0.05s infinite, crt-glitch 8s infinite;
+        }
+
+        @keyframes crt-glitch {
+            0%, 95%, 100% {
+                clip-path: none;
+                transform: translate(0, 0);
+            }
+            96% {
+                clip-path: inset(20% 0 30% 0);
+                transform: translate(-3px, 0);
+            }
+            97% {
+                clip-path: inset(50% 0 20% 0);
+                transform: translate(3px, 0);
+            }
+            98% {
+                clip-path: inset(10% 0 60% 0);
+                transform: translate(-2px, 0);
+            }
         }
 
         /* Monitor controls */
@@ -869,7 +920,7 @@
                     <div class="monitor-body">
                         <div class="monitor-screen-frame">
                             <div class="monitor-screen">
-                                <img src="photo-placeholder.jpg" alt="Paul Leali" onerror="this.parentElement.innerHTML='<div style=\'color:#ff9500;font-family:Space Mono;font-size:12px;padding:20px;text-align:center;\'>NO SIGNAL<br><br>_</div>'">
+                                <img src="paul-bw-pixel.png" alt="Paul Leali" onerror="this.parentElement.innerHTML='<div style=\'color:#ff9500;font-family:Space Mono;font-size:12px;padding:20px;text-align:center;\'>NO SIGNAL<br><br>_</div>'">
                             </div>
                         </div>
                         <div class="monitor-controls">
