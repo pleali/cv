@@ -510,32 +510,35 @@
             50% { box-shadow: 0 0 20px rgba(0, 212, 170, 0.8); }
         }
 
-        /* Era: Web 2.0 (2004-2012) */
+        /* Era: Windows 8 Metro (2004-2012) */
         .era-web2 .timeline-header {
-            background: linear-gradient(180deg, #2a2a3a 0%, #1a1a24 100%);
+            background: #2d89ef;
             padding: 16px;
-            border-radius: 10px;
-            border: 1px solid #ff6b35;
-            position: relative;
-            overflow: hidden;
+            border-radius: 0;
+            border: none;
+            border-left: 4px solid #2b5797;
         }
         .era-web2 .timeline-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
-            border-radius: 10px 10px 0 0;
+            display: none;
         }
         .era-web2 .timeline-period {
-            background: linear-gradient(180deg, #ff8f5f 0%, #ff6b35 100%);
+            background: #2b5797;
             color: white;
-            border-radius: 20px;
+            border-radius: 0;
+            font-weight: 600;
         }
         .era-web2 .timeline-company {
-            color: #ff6b35;
+            color: white;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        .era-web2 .timeline-role {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .era-web2 .timeline-description li::before {
+            content: '■';
+            font-size: 0.6em;
+            color: #2d89ef;
         }
 
         /* Era: Windows XP (2001-2004) */
