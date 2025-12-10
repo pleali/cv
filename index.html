@@ -7,7 +7,7 @@
     <meta name="keywords" content="Delphi, AWS, DevOps, Spring Boot, Java, Chiffrement, Sécurité, Cloud, Backend, Lyon, France">
     <title>Paul Leali | Expert Technique & Cloud</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
@@ -727,6 +727,52 @@
             font-family: 'Space Mono', monospace;
         }
 
+        /* Typing Console */
+        .typing-console {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin: 0 0 80px 0;
+            font-family: 'VT323', monospace;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: #00d4aa;
+            position: relative;
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .typing-console::before {
+            content: '> ./about_me.sh';
+            display: block;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #222;
+        }
+
+        .typing-text {
+            white-space: pre-wrap;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.1em;
+            background: #00d4aa;
+            margin-left: 2px;
+            animation: cursor-blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes cursor-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
         /* Projects */
         .projects-grid {
             display: grid;
@@ -940,6 +986,15 @@
                 </div>
             </div>
         </header>
+
+        <!-- INTRO TYPING -->
+        <section id="intro">
+            <div class="container">
+                <div class="typing-console">
+                    <span class="typing-text" id="typing-text"></span><span class="typing-cursor" id="typing-cursor"></span>
+                </div>
+            </div>
+        </section>
 
         <!-- COMPÉTENCES -->
         <section id="competences">
@@ -1211,6 +1266,55 @@
     </div>
     <script>
         lucide.createIcons();
+
+        // Typing effect
+        (function() {
+            const text = `J'ai commencé à coder quand les disquettes faisaient vraiment 5"¼ et que l'assembleur Z80 était un skill LinkedIn avant l'heure.
+
+30 ans plus tard, je suis toujours là — preuve que les dinosaures peuvent évoluer.
+
+Aujourd'hui directeur technique d'une solution de sauvegarde cloud, je jongle entre mon vieux compagnon Delphi (oui, il respire encore très bien) et les technos modernes : AWS, Docker, Spring Boot.
+
+Ma particularité ? Je fais le pont entre le code legacy que plus personne n'ose toucher et les architectures cloud dernier cri.
+
+Et parce qu'un vieux dev peut apprendre de nouveaux tricks, j'ai adopté l'IA générative comme copilote.
+
+Du Z80 à Claude Code : le voyage continue.`;
+
+            const typingElement = document.getElementById('typing-text');
+            const cursorElement = document.getElementById('typing-cursor');
+            let index = 0;
+            let started = false;
+
+            function typeWriter() {
+                if (index < text.length) {
+                    const char = text.charAt(index);
+                    typingElement.textContent += char;
+                    index++;
+                    // Vitesse variable : plus lent sur ponctuation, plus rapide sur espaces
+                    let delay = 25;
+                    if (char === '.' || char === '?' || char === '!') delay = 300;
+                    else if (char === ',') delay = 150;
+                    else if (char === '\n') delay = 200;
+                    else if (char === ' ') delay = 15;
+                    setTimeout(typeWriter, delay);
+                }
+            }
+
+            // Intersection Observer pour démarrer quand visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !started) {
+                        started = true;
+                        setTimeout(typeWriter, 500);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            if (typingElement) {
+                observer.observe(typingElement.parentElement);
+            }
+        })();
     </script>
 </body>
 </html>
