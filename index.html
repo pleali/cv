@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Paul Leali - Responsable Technique, Expert Delphi & Cloud, DevOps. Plus de 30 ans d'expérience en développement logiciel.">
-    <meta name="keywords" content="Delphi, AWS, DevOps, Spring Boot, Java, Chiffrement, Sécurité, Cloud, Backend, Lyon, France">
-    <title>Paul Leali | Expert Technique & Cloud</title>
+    <meta name="description" content="Paul Leali - Directeur Technique / CTO, 30+ ans d'expérience du code assembleur au cloud AWS. Expert Delphi, Java, DevOps.">
+    <meta name="keywords" content="CTO, Directeur Technique, VP Engineering, Delphi, AWS, DevOps, Spring Boot, Java, Cloud, Lyon, France">
+    <title>Paul Leali | Directeur Technique & CTO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -914,20 +914,529 @@
             }
         }
 
+        /* Navbar sticky */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-bar.visible {
+            transform: translateY(0);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            width: 100%;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-hamburger i {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 56px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 15, 0.95);
+                flex-direction: column;
+                padding: 16px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-hamburger {
+                display: block;
+            }
+        }
+
+        /* Profil section */
+        .profil-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 48px;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profil-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-1);
+        }
+
+        .profil-text p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .profil-text .accent-num {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .aplayer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            padding: 10px 18px;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            margin-top: 8px;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+
+        .profil-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .metric-item {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .profil-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding: 28px;
+            }
+
+            .profil-metrics {
+                flex-direction: row;
+                justify-content: space-around;
+                order: -1;
+            }
+
+            .metric-value {
+                font-size: 2rem;
+            }
+        }
+
+        /* Atouts differenciants */
+        .atouts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .atout-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .atout-card:hover {
+            border-left-color: var(--accent-secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 212, 170, 0.1);
+        }
+
+        .atout-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .atout-card h4 i {
+            color: var(--accent);
+            width: 20px;
+            height: 20px;
+        }
+
+        .atout-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .atouts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Timeline context */
+        .timeline-context {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-left: 2px solid var(--accent);
+            padding-left: 16px;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .era-web2 .timeline-context {
+            border-color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .era-winxp .timeline-context {
+            border-color: #a8d4ff;
+            color: #a8d4ff;
+        }
+
+        .era-win95 .timeline-context {
+            border-color: #000080;
+            color: #333;
+            padding: 0 8px 8px 16px;
+        }
+
+        .era-terminal .timeline-context {
+            border-color: #ff9500;
+            color: #ff9500;
+            opacity: 0.7;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Expand/collapse */
+        .timeline-expandable {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease;
+        }
+
+        .timeline-expandable.expanded {
+            max-height: 500px;
+        }
+
+        .expand-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            padding: 8px 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .expand-toggle:hover {
+            opacity: 0.8;
+        }
+
+        .expand-toggle i {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .expand-toggle.expanded i {
+            transform: rotate(180deg);
+        }
+
+        /* Fade-in animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+        .fade-in-delay-4 { transition-delay: 0.4s; }
+        .fade-in-delay-5 { transition-delay: 0.5s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* Footer enrichi */
+        .footer-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-badge i {
+            width: 16px;
+            height: 16px;
+            color: var(--accent);
+        }
+
+        .footer-interests {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-reference {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+
         /* Print styles */
         @media print {
             body {
                 background: white;
                 color: #1a1a1a;
+                font-size: 10pt;
             }
-            
-            .bg-grid, .glow-orb {
-                display: none;
+
+            .bg-grid, .glow-orb, .nav-bar, .retro-monitor, .typing-console {
+                display: none !important;
             }
-            
-            .contact-link, .skill-card, .project-card, .education-item {
+
+            header {
+                min-height: auto;
+                padding: 20px 0;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 20px 0;
+                page-break-inside: avoid;
+            }
+
+            .timeline-item {
+                page-break-inside: avoid;
+            }
+
+            .contact-link, .skill-card, .project-card, .education-item,
+            .atout-card, .profil-grid, .footer-badge {
                 background: #f5f5f5;
                 border-color: #ddd;
+                transform: none !important;
+                box-shadow: none !important;
+            }
+
+            .skill-card::before, .profil-grid::before {
+                display: none;
+            }
+
+            .hero-text h1 {
+                -webkit-text-fill-color: #2c3e50;
+                color: #2c3e50;
+            }
+
+            .metric-value, .nav-brand {
+                -webkit-text-fill-color: #2c3e50;
+                color: #2c3e50;
+            }
+
+            .aplayer-badge {
+                animation: none;
+                background: #f0f8f6;
+                border-color: #2c3e50;
+                color: #2c3e50;
+            }
+
+            .era-web2 .timeline-header {
+                background: #f0f4f8;
+                border-left-color: #2d89ef;
+            }
+
+            .era-web2 .timeline-company,
+            .era-web2 .timeline-role,
+            .era-web2 .timeline-context {
+                color: #2d89ef;
+                -webkit-text-fill-color: initial;
+            }
+
+            .era-winxp .timeline-header {
+                background: #f0f4f8;
+            }
+
+            .era-winxp .timeline-company {
+                color: #2b5fcc;
+                text-shadow: none;
+            }
+
+            .era-win95 .timeline-header {
+                background: #f0f0f0;
+            }
+
+            .era-terminal .timeline-header {
+                background: #f5f5f0;
+                border-color: #996600;
+            }
+
+            .era-terminal .timeline-company {
+                color: #996600;
+                text-shadow: none;
+            }
+
+            .era-terminal .timeline-context {
+                color: #996600;
+                opacity: 1;
+            }
+
+            .timeline-expandable {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            .expand-toggle {
+                display: none;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .fade-in {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            footer {
+                page-break-before: avoid;
             }
         }
     </style>
@@ -937,14 +1446,32 @@
     <div class="glow-orb glow-orb-1"></div>
     <div class="glow-orb glow-orb-2"></div>
 
+    <!-- NAVBAR STICKY -->
+    <nav class="nav-bar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">PL</a>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+                <i data-lucide="menu"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#atouts">Atouts</a></li>
+                <li><a href="#competences">Comp&eacute;tences</a></li>
+                <li><a href="#experience">Exp&eacute;rience</a></li>
+                <li><a href="#projets">Open Source</a></li>
+                <li><a href="#formation">Formation</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <!-- HEADER / HERO -->
         <header>
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Paul LEALI</h1>
-                    <p class="subtitle">Responsable Technique • Expert Delphi & Cloud • DevOps</p>
-                    <p class="tagline">// 30+ ans d'expertise • Du code assembleur au cloud AWS</p>
+                    <p class="subtitle">Directeur Technique · CTO · VP Engineering</p>
+                    <p class="tagline">// 30+ ans d'expertise technique · De l'assembleur Z80 au cloud AWS</p>
                     
                     <div class="contact-links">
                         <a href="mailto:p.leali@free.fr" class="contact-link">
@@ -958,6 +1485,10 @@
                         <a href="https://github.com/pleali" target="_blank" class="contact-link">
                             <i data-lucide="github"></i>
                             GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/paul-leali-97a99b3/" target="_blank" class="contact-link">
+                            <i data-lucide="linkedin"></i>
+                            LinkedIn
                         </a>
                         <a href="https://rapidocloud.net" target="_blank" class="contact-link">
                             <i data-lucide="globe"></i>
@@ -993,9 +1524,85 @@
 
         <!-- INTRO TYPING -->
         <section id="intro">
-            <div class="container">
-                <div class="typing-console">
-                    <span class="typing-text" id="typing-text"></span><span class="typing-cursor" id="typing-cursor"></span>
+            <div class="typing-console">
+                <span class="typing-text" id="typing-text"></span><span class="typing-cursor" id="typing-cursor"></span>
+            </div>
+        </section>
+
+        <!-- PROFIL -->
+        <section id="profil">
+            <div class="section-header">
+                <span class="section-number">00.</span>
+                <h2 class="section-title">Profil</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="profil-grid fade-in">
+                <div class="profil-text">
+                    <p>
+                        Directeur Technique avec <span class="accent-num">30 ans d'exp&eacute;rience</span>, de l'assembleur Z80 au cloud AWS.
+                        Chez RapidoBackup, j'ai port&eacute; seul l'infrastructure de <span class="accent-num">900 clients</span>
+                        et <span class="accent-num">300 To de donn&eacute;es</span> : architecture, d&eacute;veloppement, DevOps, support 7/7.
+                    </p>
+                    <p>
+                        Sp&eacute;cialiste de la modernisation de legacy et des environnements &agrave; forte contrainte
+                        (sant&eacute;, s&eacute;curit&eacute;, conformit&eacute;). Capable de prendre un projet de z&eacute;ro
+                        et de le mener jusqu'en production, en autonomie ou en &eacute;quipe.
+                    </p>
+                    <div class="aplayer-badge">
+                        <i data-lucide="zap" style="width:16px;height:16px;"></i>
+                        Profil A-Player (AssessFirst) : adaptabilit&eacute; hors du commun, apprentissage rapide, orient&eacute; action
+                    </div>
+                </div>
+                <div class="profil-metrics">
+                    <div class="metric-item fade-in fade-in-delay-1">
+                        <div class="metric-value" data-countup="30">30+</div>
+                        <div class="metric-label">ans d'exp&eacute;rience</div>
+                    </div>
+                    <div class="metric-item fade-in fade-in-delay-2">
+                        <div class="metric-value" data-countup="900">900</div>
+                        <div class="metric-label">clients en production</div>
+                    </div>
+                    <div class="metric-item fade-in fade-in-delay-3">
+                        <div class="metric-value" data-countup="300">300 To</div>
+                        <div class="metric-label">de donn&eacute;es g&eacute;r&eacute;es</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ATOUTS DIFFÉRENCIANTS -->
+        <section id="atouts">
+            <div class="section-header">
+                <span class="section-number">01.</span>
+                <h2 class="section-title">Atouts diff&eacute;renciants</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="atouts-grid">
+                <div class="atout-card fade-in fade-in-delay-1">
+                    <h4><i data-lucide="layers"></i> Polyvalence</h4>
+                    <p>Dev, infra, s&eacute;curit&eacute;, web &mdash; tout en un. Capable d'intervenir sur l'ensemble de la stack.</p>
+                </div>
+                <div class="atout-card fade-in fade-in-delay-2">
+                    <h4><i data-lucide="git-merge"></i> Pont legacy / moderne</h4>
+                    <p>Comp&eacute;tence rare et recherch&eacute;e. Du code assembleur aux architectures cloud, je fais le lien.</p>
+                </div>
+                <div class="atout-card fade-in fade-in-delay-3">
+                    <h4><i data-lucide="user"></i> Autonomie</h4>
+                    <p>Capable de porter seul un projet critique. 13 ans en responsabilit&eacute; technique unique chez BUSS.</p>
+                </div>
+                <div class="atout-card fade-in fade-in-delay-4">
+                    <h4><i data-lucide="wrench"></i> Pragmatisme</h4>
+                    <p>L'outil adapt&eacute; au besoin, pas l'inverse. Toujours orient&eacute; r&eacute;sultats et livraison.</p>
+                </div>
+                <div class="atout-card fade-in fade-in-delay-5">
+                    <h4><i data-lucide="server"></i> 13 ans en production</h4>
+                    <p>RapidoBackup : disponibilit&eacute; 24/7, support client 7/7, infrastructure critique maintenue sans interruption.</p>
+                </div>
+                <div class="atout-card fade-in fade-in-delay-5">
+                    <h4><i data-lucide="users"></i> Leadership technique</h4>
+                    <p>Direction d'&eacute;quipe R&D (4 pers.), participation CODIR, d&eacute;cisions strat&eacute;giques.</p>
                 </div>
             </div>
         </section>
@@ -1003,8 +1610,8 @@
         <!-- COMPÉTENCES -->
         <section id="competences">
             <div class="section-header">
-                <span class="section-number">01.</span>
-                <h2 class="section-title">Compétences</h2>
+                <span class="section-number">02.</span>
+                <h2 class="section-title">Comp&eacute;tences</h2>
                 <div class="section-line"></div>
             </div>
 
@@ -1079,104 +1686,143 @@
         <!-- EXPÉRIENCE -->
         <section id="experience">
             <div class="section-header">
-                <span class="section-number">02.</span>
-                <h2 class="section-title">Expérience</h2>
+                <span class="section-number">03.</span>
+                <h2 class="section-title">Exp&eacute;rience</h2>
                 <div class="section-line"></div>
             </div>
 
             <div class="timeline">
                 <!-- Era: Modern AI (2012-Present) -->
-                <div class="timeline-item era-ai">
+                <div class="timeline-item era-ai fade-in">
                     <div class="timeline-header">
-                        <span class="timeline-company"><i data-lucide="sparkles" class="era-icon"></i>BUSS - RapidoBackup / RapidoCloud</span>
-                        <span class="timeline-period">2012 — Présent</span>
+                        <span class="timeline-company"><i data-lucide="sparkles" class="era-icon"></i>BUSS &mdash; RapidoBackup / RapidoCloud</span>
+                        <span class="timeline-period">2012 &mdash; 2025</span>
                     </div>
-                    <p class="timeline-role">Responsable Technique</p>
+                    <p class="timeline-role">Directeur Technique</p>
+                    <p class="timeline-context">Reprise du p&eacute;rim&egrave;tre technique suite au d&eacute;part d'un associ&eacute; fondateur. Responsable technique unique d'une plateforme SaaS critique.</p>
                     <ul class="timeline-description">
-                        <li>Architecte et développeur principal de la solution de sauvegarde cloud sécurisée</li>
-                        <li>Mise en place de l'infrastructure DevOps complète (AWS, Docker, CI/CD)</li>
-                        <li>Développement du système de déduplication des données par blocs de tailles variables</li>
-                        <li>Réalisation du site vitrine RapidoCloud.net et pilotage des campagnes marketing</li>
+                        <li><strong>Migration cloud</strong> &mdash; Pilotage complet colocation (Colt) &rarr; AWS (EC2, S3, RDS, EKS)</li>
+                        <li><strong>Modernisation architecture</strong> &mdash; D&eacute;coupage progressif du monolithe en microservices</li>
+                        <li><strong>Console centralis&eacute;e</strong> &mdash; Configuration &agrave; distance des clients de sauvegarde (React / shadcn-ui / Spring Boot)</li>
+                        <li><strong>Innovation stockage</strong> &mdash; D&eacute;duplication par blocs de taille variable (Rolling Hash, recherche acad&eacute;mique)</li>
+                        <li><strong>XXHash pour Delphi</strong> &mdash; Portage natif de l'algorithme XXHash pour une d&eacute;duplication rapide</li>
                     </ul>
+                    <div class="timeline-expandable" id="buss-more">
+                        <ul class="timeline-description">
+                            <li><strong>Interface Delphi/Java</strong> &mdash; Utilisation de JNI pour les appels Java depuis le client Delphi</li>
+                            <li><strong>Tracker m&eacute;moire</strong> &mdash; Outil de d&eacute;tection de fuites m&eacute;moire ayant r&eacute;v&eacute;l&eacute; de nombreux bugs</li>
+                            <li><strong>VSS pour Delphi</strong> &mdash; Librairie Volume Shadow Copy Service native</li>
+                            <li><strong>D&eacute;tection Ransomware</strong> &mdash; Blocage des fichiers affect&eacute;s pour pr&eacute;server les sauvegardes saines</li>
+                            <li><strong>CI/CD Jenkins</strong> &mdash; Industrialisation compl&egrave;te du pipeline de build et d&eacute;ploiement</li>
+                            <li><strong>Support &amp; communication</strong> &mdash; Disponibilit&eacute; client 7/7, site vitrine, campagnes emailing</li>
+                        </ul>
+                    </div>
+                    <button class="expand-toggle" id="buss-toggle" onclick="toggleExpand('buss')">
+                        Voir plus <i data-lucide="chevron-down"></i>
+                    </button>
                     <div class="timeline-tech">
                         <span>AWS</span>
                         <span>Java</span>
                         <span>Spring Boot</span>
+                        <span>React</span>
                         <span>Delphi</span>
                         <span>Docker</span>
+                        <span>Linux</span>
                         <span>PostgreSQL</span>
                     </div>
                 </div>
 
                 <!-- Era: Web 2.0 (2004-2012) -->
-                <div class="timeline-item era-web2">
+                <div class="timeline-item era-web2 fade-in">
                     <div class="timeline-header">
                         <span class="timeline-company"><i data-lucide="lightbulb" class="era-icon"></i>MICROCONCEPT (Groupe SOFTWAYMEDICAL)</span>
-                        <span class="timeline-period">2004 — 2012</span>
+                        <span class="timeline-period">2004 &mdash; 2012</span>
                     </div>
-                    <p class="timeline-role">Responsable Pôle R&D</p>
+                    <p class="timeline-role">Responsable P&ocirc;le R&amp;D</p>
+                    <p class="timeline-context">Rappel&eacute; par Softway Medical apr&egrave;s le rachat de Microconcept et le d&eacute;part du CTO fondateur. Enjeu : assurer la continuit&eacute; technique.</p>
                     <ul class="timeline-description">
-                        <li>Direction d'une équipe de développement dans le secteur de la santé</li>
-                        <li>Pilotage des projets d'innovation et veille technologique</li>
-                        <li>Définition de l'architecture logicielle des produits</li>
+                        <li><strong>Direction d'&eacute;quipe</strong> &mdash; Management bienveillant de 4 d&eacute;veloppeurs</li>
+                        <li><strong>CODIR</strong> &mdash; Participation aux d&eacute;cisions strat&eacute;giques post-acquisition</li>
+                        <li><strong>Innovation</strong> &mdash; Pr&eacute;paration de la refonte du moteur SESAM-Vitale (Delphi &rarr; .Net/Java)</li>
+                        <li><strong>CI/CD</strong> &mdash; Mise en place de Jenkins pour builds automatiques Delphi, d&eacute;ploiement automatis&eacute;</li>
+                        <li><strong>Mise &agrave; jour OTA</strong> &mdash; Distribution automatique pour suivre les &eacute;volutions r&eacute;glementaires</li>
+                        <li><strong>Conformit&eacute;</strong> &mdash; Passage des agr&eacute;ments SESAM-Vitale (audits lourds)</li>
+                        <li><strong>Lobbying</strong> &mdash; Groupement d'&eacute;diteurs sant&eacute; aupr&egrave;s de l'Assurance Maladie</li>
                     </ul>
+                    <div class="timeline-tech">
+                        <span>Java</span>
+                        <span>Delphi</span>
+                        <span>Assembleur</span>
+                        <span>Jenkins</span>
+                        <span>SVN</span>
+                    </div>
                 </div>
 
                 <!-- Era: Windows XP (2001-2004) -->
-                <div class="timeline-item era-winxp">
+                <div class="timeline-item era-winxp fade-in">
                     <div class="timeline-header">
-                        <span class="timeline-company"><i data-lucide="shield" class="era-icon"></i>CSK Santé (devenu Maidis)</span>
-                        <span class="timeline-period">2001 — 2004</span>
+                        <span class="timeline-company"><i data-lucide="shield" class="era-icon"></i>CSK Sant&eacute; (devenu MAIDIS)</span>
+                        <span class="timeline-period">2001 &mdash; 2004</span>
                     </div>
-                    <p class="timeline-role">Responsable Développements SESAM-Vitale</p>
+                    <p class="timeline-role">Responsable D&eacute;veloppements SESAM-Vitale</p>
+                    <p class="timeline-context">Startup sant&eacute;. Enjeu critique : monter en agr&eacute;ments pour passer du secteur hospitalier au march&eacute; lib&eacute;ral.</p>
                     <ul class="timeline-description">
-                        <li>Lead technique sur l'évolution du système national de santé</li>
-                        <li>Architecture et développement des modules critiques</li>
+                        <li><strong>Lead technique</strong> &mdash; Pilotage de la transition r&eacute;glementaire SESAM-Vitale</li>
+                        <li><strong>Conformit&eacute;</strong> &mdash; Int&eacute;gration des normes dans le logiciel existant</li>
+                        <li><strong>Croissance</strong> &mdash; Ouverture du march&eacute; lib&eacute;ral, enjeu de viabilit&eacute; commerciale</li>
                     </ul>
                     <div class="timeline-tech">
-                        <span>Visual C++</span>
+                        <span>C++</span>
                         <span>MFC</span>
                         <span>COM/DCOM</span>
-                        <span>MSDE</span>
+                        <span>SVN</span>
                     </div>
                 </div>
 
                 <!-- Era: Windows 95/98 (1996-2001) -->
-                <div class="timeline-item era-win95">
+                <div class="timeline-item era-win95 fade-in">
                     <div class="timeline-header">
                         <span class="timeline-company"><i data-lucide="monitor" class="era-icon"></i>LOGUN (Groupe MICROCONCEPT)</span>
-                        <span class="timeline-period">1996 — 2001</span>
+                        <span class="timeline-period">1996 &mdash; 2001</span>
                     </div>
                     <p class="timeline-role">Chef de Projets</p>
                     <ul class="timeline-description">
-                        <li>Production de logiciels pour professionnels de santé</li>
-                        <li>Intégration pionnière du système SESAM-Vitale</li>
-                        <li>Développement clients POP/SMTP pour transmission IP</li>
+                        <li><strong>Logiciel m&eacute;tier</strong> &mdash; Migration du logiciel infirmier de l'assembleur vers Delphi 2/6</li>
+                        <li><strong>Pionnier SESAM-Vitale</strong> &mdash; Int&eacute;gration pionni&egrave;re du standard de sant&eacute;</li>
+                        <li><strong>Communication TPE</strong> &mdash; T&eacute;l&eacute;chargement de factures SESAM-Vitale, certification nomade carte Vitale</li>
+                        <li><strong>Composants Delphi</strong> &mdash; D&eacute;veloppement de composants VCL sp&eacute;cifiques</li>
+                        <li><strong>Adoption Firebird</strong> &mdash; Migration de la base de donn&eacute;es interne</li>
                     </ul>
                     <div class="timeline-tech">
-                        <span>Delphi 2-5</span>
+                        <span>Delphi 2-6</span>
                         <span>C++</span>
+                        <span>Firebird</span>
                         <span>Interbase</span>
                     </div>
                 </div>
 
                 <!-- Era: Terminal CRT (1986-1996) -->
-                <div class="timeline-item era-terminal">
+                <div class="timeline-item era-terminal fade-in">
                     <div class="timeline-header">
                         <span class="timeline-company"><i data-lucide="terminal" class="era-icon"></i>MICROCONCEPT / S.INDUSTRIE</span>
-                        <span class="timeline-period">1986 — 1996</span>
+                        <span class="timeline-period">1986 &mdash; 1996</span>
                     </div>
-                    <p class="timeline-role">Concepteur / Développeur</p>
+                    <p class="timeline-role">Concepteur / D&eacute;veloppeur</p>
+                    <p class="timeline-context">D&eacute;buts &agrave; 15 ans, &agrave; l'aube de la micro-informatique. Exp&eacute;rience formatrice au c&oelig;ur de l'informatique de sant&eacute;.</p>
                     <ul class="timeline-description">
-                        <li>Développement bas niveau en Assembleur x86, C, C++, Pascal</li>
-                        <li>Création de logiciels de gestion et transmission de données médicales</li>
-                        <li>Pilotage direct modem et protocoles Xmodem</li>
+                        <li><strong>Mode prot&eacute;g&eacute; 80486</strong> &mdash; Exploitation m&eacute;moire au-del&agrave; de 640 Ko avant que Windows sache le faire</li>
+                        <li><strong>Gestionnaire m&eacute;moire</strong> &mdash; Allocation dynamique avec garbage collector en assembleur</li>
+                        <li><strong>Client/serveur NetBios</strong> &mdash; Couche r&eacute;seau pour logiciel infirmier et ERP interne</li>
+                        <li><strong>Passerelle DOS/Windows</strong> &mdash; Appels DLL Windows depuis DOS pour les API SESAM-Vitale (C + assembleur)</li>
+                        <li><strong>Moteur d'&eacute;tats</strong> &mdash; Langage d&eacute;di&eacute; et interpr&eacute;teur proche du C</li>
+                        <li><strong>ERP interne</strong> &mdash; D&eacute;veloppement complet en assembleur</li>
                     </ul>
                     <div class="timeline-tech">
-                        <span>Assembleur x86</span>
+                        <span>Assembleur Z80/x86</span>
                         <span>C</span>
                         <span>C++</span>
                         <span>Pascal</span>
+                        <span>Delphi</span>
                     </div>
                 </div>
             </div>
@@ -1185,7 +1831,7 @@
         <!-- PROJETS OPEN SOURCE -->
         <section id="projets">
             <div class="section-header">
-                <span class="section-number">03.</span>
+                <span class="section-number">04.</span>
                 <h2 class="section-title">Projets Open Source</h2>
                 <div class="section-line"></div>
             </div>
@@ -1229,7 +1875,7 @@
         <!-- FORMATION -->
         <section id="formation">
             <div class="section-header">
-                <span class="section-number">04.</span>
+                <span class="section-number">05.</span>
                 <h2 class="section-title">Formation</h2>
                 <div class="section-line"></div>
             </div>
@@ -1264,29 +1910,41 @@
 
         <!-- FOOTER -->
         <footer>
-            <p>© 2025 Paul Leali — Villefontaine, France</p>
-            <p style="margin-top: 8px; font-size: 0.8rem;">Anglais technique • Disponible pour nouveaux défis</p>
+            <div class="footer-info">
+                <span class="footer-badge">
+                    <i data-lucide="calendar"></i>
+                    Disponible sous 3 mois (n&eacute;gociable)
+                </span>
+                <span class="footer-badge">
+                    <i data-lucide="map-pin"></i>
+                    Lyon / Grenoble ou t&eacute;l&eacute;travail
+                </span>
+                <span class="footer-badge">
+                    <i data-lucide="languages"></i>
+                    Fran&ccedil;ais natif &middot; Anglais technique
+                </span>
+            </div>
+            <p class="footer-interests">Running (35 km/semaine) &middot; Musculation &middot; V&eacute;hicules de collection &middot; Rallye VHC</p>
+            <div class="footer-reference">
+                <strong>R&eacute;f&eacute;rence :</strong> Marc ROTCEIG &mdash; CEO, BUSS - RapidoBackup &middot; 01 47 70 71 72 &middot; contact@rapidobackup.com
+            </div>
+            <p>&copy; 2025 Paul Leali &mdash; Villefontaine, France</p>
         </footer>
     </div>
     <script>
         lucide.createIcons();
 
-        // Typing effect
+        // === TYPING EFFECT ===
         (function() {
-            const text = `J'ai commencé à coder quand les disquettes faisaient vraiment 5"¼ et que l'assembleur Z80 était un skill LinkedIn avant l'heure.
+            const text = `J'ai commenc\u00e9 \u00e0 coder quand les disquettes faisaient 5"\u00bc et que l'assembleur Z80 \u00e9tait un skill LinkedIn avant l'heure.
 
-30 ans plus tard, je suis toujours là — preuve que les dinosaures peuvent évoluer.
+30 ans plus tard, je suis toujours l\u00e0 \u2014 preuve que les dinosaures peuvent \u00e9voluer.
 
-Aujourd'hui directeur technique d'une solution de sauvegarde cloud, je jongle entre mon vieux compagnon Delphi (oui, il respire encore très bien) et les technos modernes : AWS, Docker, Spring Boot.
+Ma particularit\u00e9 ? Je fais le pont entre le code legacy que plus personne n'ose toucher et les architectures cloud dernier cri.
 
-Ma particularité ? Je fais le pont entre le code legacy que plus personne n'ose toucher et les architectures cloud dernier cri.
-
-Et parce qu'un vieux dev peut apprendre de nouveaux tricks, j'ai adopté l'IA générative comme copilote.
-
-Du Z80 à Claude Code : le voyage continue.`;
+Du Z80 \u00e0 Claude Code : le voyage continue.`;
 
             const typingElement = document.getElementById('typing-text');
-            const cursorElement = document.getElementById('typing-cursor');
             let index = 0;
             let started = false;
 
@@ -1295,7 +1953,6 @@ Du Z80 à Claude Code : le voyage continue.`;
                     const char = text.charAt(index);
                     typingElement.textContent += char;
                     index++;
-                    // Vitesse variable : plus lent sur ponctuation, plus rapide sur espaces
                     let delay = 25;
                     if (char === '.' || char === '?' || char === '!') delay = 300;
                     else if (char === ',') delay = 150;
@@ -1305,8 +1962,7 @@ Du Z80 à Claude Code : le voyage continue.`;
                 }
             }
 
-            // Intersection Observer pour démarrer quand visible
-            const observer = new IntersectionObserver((entries) => {
+            const typingObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !started) {
                         started = true;
@@ -1316,9 +1972,131 @@ Du Z80 à Claude Code : le voyage continue.`;
             }, { threshold: 0.3 });
 
             if (typingElement) {
-                observer.observe(typingElement.parentElement);
+                typingObserver.observe(typingElement.parentElement);
             }
         })();
+
+        // === NAVBAR STICKY ===
+        (function() {
+            const navbar = document.getElementById('navbar');
+            const hamburger = document.getElementById('nav-hamburger');
+            const navLinks = document.getElementById('nav-links');
+            const heroHeight = window.innerHeight * 0.8;
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > heroHeight) {
+                    navbar.classList.add('visible');
+                } else {
+                    navbar.classList.remove('visible');
+                }
+            });
+
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navLinks.classList.toggle('open');
+                });
+            }
+
+            // Close mobile menu on link click
+            navLinks.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('open');
+                });
+            });
+
+            // Active section highlighting
+            const sections = document.querySelectorAll('section[id]');
+            const navLinksAll = navLinks.querySelectorAll('a');
+
+            const sectionObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        navLinksAll.forEach(function(link) {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.3, rootMargin: '-56px 0px 0px 0px' });
+
+            sections.forEach(function(section) {
+                sectionObserver.observe(section);
+            });
+        })();
+
+        // === FADE-IN ANIMATIONS ===
+        (function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                fadeElements.forEach(function(el) { el.classList.add('visible'); });
+                return;
+            }
+
+            const fadeObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            fadeElements.forEach(function(el) {
+                fadeObserver.observe(el);
+            });
+        })();
+
+        // === COUNTUP METRICS ===
+        (function() {
+            const metrics = document.querySelectorAll('[data-countup]');
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const countObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.getAttribute('data-countup'));
+                        const finalText = el.textContent;
+                        let current = 0;
+                        const step = Math.max(1, Math.floor(target / 40));
+                        const interval = setInterval(function() {
+                            current += step;
+                            if (current >= target) {
+                                el.textContent = finalText;
+                                clearInterval(interval);
+                            } else {
+                                el.textContent = current;
+                            }
+                        }, 30);
+                        countObserver.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            metrics.forEach(function(el) {
+                countObserver.observe(el);
+            });
+        })();
+
+        // === EXPAND/COLLAPSE ===
+        function toggleExpand(id) {
+            const content = document.getElementById(id + '-more');
+            const toggle = document.getElementById(id + '-toggle');
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                toggle.classList.remove('expanded');
+                toggle.innerHTML = 'Voir plus <i data-lucide="chevron-down"></i>';
+            } else {
+                content.classList.add('expanded');
+                toggle.classList.add('expanded');
+                toggle.innerHTML = 'Voir moins <i data-lucide="chevron-down"></i>';
+            }
+            lucide.createIcons();
+        }
     </script>
 </body>
 </html>
