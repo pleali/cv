@@ -1,0 +1,27 @@
+Directeur Technique — RapidoCloud (BUSS)
+Infrastructure cloud française — Backup & stockage
+
+Périmètre : Responsable technique unique d'une plateforme SaaS de backup cloud servant 900 clients et gérant 300 To de données. Reprend le poste d'un associé fondateur partant.
+
+Stack technique :
+
+Backend : Java (serveur core), Spring Boot (admin), PHP (facturation)
+Frontend : React + Shadcn UI (console web)
+Client legacy : Delphi
+Infrastructure : AWS (EKS, S3), Docker, Linux
+Base de données : PostgreSQL
+CI/CD : Jenkins
+Responsabilités :
+
+Architecture et développement full-stack
+DevOps et infrastructure AWS
+Support client 7/7
+Sites web (vitrine, console)
+Communication technique et emails marketing
+Réalisations clés :
+
+Migration cloud — Pilotage de la migration complète d'OVH Cloud vers AWS
+Optimisation mémoire — Élimination des limitations techniques historiques (gestion mémoire déficiente)
+Modernisation architecture — Découpage progressif du monolithe en microservices
+Innovation stockage — Implémentation d'un système de déduplication avec découpage en blocs de taille variable, basé sur les dernières publications de recherche académique
+Industrialisation — Mise en place de la CI/CD Jenkins

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Paul Leali - Expert Delphi</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 15mm;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.4;
+      color: #1a1a1a;
+      background: white;
+    }
+    
+    .container {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 0;
+    }
+    
+    /* En-tête */
+    header {
+      border-bottom: 2px solid #2c3e50;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    
+    h1 {
+      font-size: 22pt;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 2px;
+    }
+    
+    .subtitle {
+      font-size: 12pt;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    
+    .contact-info {
+      font-size: 9pt;
+      color: #444;
+    }
+    
+    .contact-info span {
+      margin-right: 14px;
+    }
+    
+    /* Sections */
+    section {
+      margin-bottom: 12px;
+    }
+    
+    h2 {
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: #2c3e50;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #bdc3c7;
+      padding-bottom: 3px;
+      margin-bottom: 8px;
+    }
+    
+    /* Profil */
+    .profil p {
+      text-align: justify;
+      margin-bottom: 4px;
+    }
+    
+    /* GitHub */
+    .github-projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    
+    .github-project {
+      background: #f8f9fa;
+      border-left: 3px solid #2c3e50;
+      padding: 8px 10px;
+    }
+    
+    .github-project h3 {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 3px;
+    }
+    
+    .github-project h3 a {
+      color: #2c3e50;
+      text-decoration: none;
+    }
+    
+    .github-project p {
+      font-size: 9pt;
+      color: #444;
+      margin-bottom: 2px;
+    }
+    
+    .github-project ul {
+      font-size: 8.5pt;
+      color: #555;
+      margin-left: 14px;
+      margin-top: 2px;
+    }
+    
+    /* Compétences */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9pt;
+    }
+    
+    .skills-table td {
+      padding: 3px 8px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .skills-table td:first-child {
+      font-weight: 600;
+      color: #2c3e50;
+      width: 25%;
+    }
+    
+    /* Expérience */
+    .job {
+      margin-bottom: 10px;
+    }
+    
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+    
+    .job-title {
+      font-weight: 600;
+      font-size: 10pt;
+    }
+    
+    .job-company {
+      color: #2c3e50;
+    }
+    
+    .job-period {
+      font-size: 9pt;
+      color: #666;
+    }
+    
+    .job-context {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 4px;
+      font-size: 9pt;
+    }
+    
+    .job ul {
+      margin-left: 14px;
+      margin-bottom: 3px;
+    }
+    
+    .job li {
+      margin-bottom: 2px;
+    }
+    
+    /* Formation */
+    .formation-item {
+      margin-bottom: 3px;
+      font-size: 9pt;
+    }
+    
+    .formation-item strong {
+      font-weight: 600;
+    }
+    
+    .formation-item span {
+      color: #666;
+    }
+    
+    /* Points forts */
+    .points-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px 12px;
+      font-size: 9pt;
+    }
+    
+    .points-grid div {
+      display: flex;
+      align-items: baseline;
+    }
+    
+    .points-grid strong {
+      color: #2c3e50;
+      margin-right: 4px;
+    }
+    
+    /* Infos pratiques */
+    .infos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3px 20px;
+      font-size: 9pt;
+    }
+    
+    .infos-grid div strong {
+      color: #2c3e50;
+    }
+    
+    /* Centres d'intérêt */
+    .interets {
+      font-size: 9pt;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <header>
+      <h1>Paul Leali</h1>
+      <div class="subtitle">Expert Delphi — 30 ans d'expérience — Développeur Senior</div>
+      <div class="contact-info">
+        <span>Villefontaine (38)</span>
+        <span>06 61 46 96 82</span>
+        <span>p.leali@free.fr</span>
+        <span>linkedin.com/in/paul-leali-97a99b3</span>
+        <span>github.com/pleali</span>
+      </div>
+    </header>
+
+    <section class="profil">
+      <h2>Profil</h2>
+      <p>
+        Développeur Delphi depuis 1995 (Delphi 2), avec une expertise allant de l'assembleur x86 aux architectures modernes. 
+        30 ans d'expérience dans le développement bas niveau, la performance, et les systèmes critiques (santé, sauvegarde cloud).
+        Contributeur open source actif avec plusieurs librairies Delphi publiées sur GitHub.
+      </p>
+    </section>
+
+    <section>
+      <h2>Projets Open Source — GitHub</h2>
+      <div class="github-projects">
+        <div class="github-project">
+          <h3><a href="https://github.com/pleali/delphi-logging-facade">delphi-logging-facade</a></h3>
+          <p>Facade de logging inspirée de SLF4J pour Delphi</p>
+          <ul>
+            <li>Architecture interface-based, loggers hiérarchiques style SLF4J/Logback</li>
+            <li>Configuration externe avec hot-reload, adapters LoggerPro/QuickLogger, thread-safe</li>
+          </ul>
+        </div>
+        <div class="github-project">
+          <h3><a href="https://github.com/pleali/delphi-mqtt-client">delphi-mqtt-client</a></h3>
+          <p>Client MQTT natif pour Delphi — IoT et messagerie asynchrone</p>
+        </div>
+        <div class="github-project">
+          <h3><a href="https://github.com/pleali/jsonrpc-mqtt">jsonrpc-mqtt</a></h3>
+          <p>Framework JSON-RPC 2.0 over MQTT — Java + client Delphi</p>
+          <ul>
+            <li>Communication peer-to-peer entre nodes distribués (IoT, microservices, edge computing)</li>
+            <li>Interopérabilité Java/Delphi via protocole standardisé</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Compétences Delphi</h2>
+      <table class="skills-table">
+        <tr><td>Versions</td><td>Delphi 2 → Delphi 13 (30 ans de pratique continue)</td></tr>
+        <tr><td>Architecture</td><td>Composants VCL/FMX, Interfaces, Génériques, RTTI</td></tr>
+        <tr><td>Performance</td><td>Optimisation mémoire, Tracker de fuites, Profilage</td></tr>
+        <tr><td>Interop</td><td>JNI (appels Java), DLL Windows, Assembleur inline</td></tr>
+        <tr><td>Réseau</td><td>MQTT, HTTP/REST, IMAP/SMTP, NetBios, Sockets</td></tr>
+        <tr><td>BDD</td><td>FireDAC, Firebird, PostgreSQL, SQLite</td></tr>
+        <tr><td>Système</td><td>VSS, Services Windows, Mode protégé x86</td></tr>
+        <tr><td>CI/CD</td><td>Jenkins pour Delphi (builds automatisés, déploiement), Git</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Expérience professionnelle</h2>
+      
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Directeur Technique — <span class="job-company">BUSS (RapidoBackup)</span></span>
+          <span class="job-period">2012 – 2025</span>
+        </div>
+        <div class="job-context">Plateforme SaaS de sauvegarde cloud (900 clients, 300 To)</div>
+        <ul>
+          <li><strong>Interface Delphi/Java via JNI</strong> — Appels bidirectionnels entre client Delphi et backend Java</li>
+          <li><strong>Tracker mémoire</strong> — Détection de fuites ayant révélé de nombreux bugs latents</li>
+          <li><strong>VSS pour Delphi</strong> — Librairie Volume Shadow Copy (publiée sur GitHub)</li>
+          <li><strong>XXhash natif</strong> — Portage de l'algorithme de hash rapide pour la déduplication</li>
+          <li><strong>Rolling Hash</strong> — Algorithmes de chunking adaptatif (Asymmetric Extremum CDC)</li>
+          <li><strong>Détection Ransomware</strong> — Analyse comportementale avant sauvegarde</li>
+        </ul>
+      </div>
+      
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Responsable Pôle R&D — <span class="job-company">MICROCONCEPT (Groupe Softway Medical)</span></span>
+          <span class="job-period">2004 – 2012</span>
+        </div>
+        <div class="job-context">Rappelé par Softway Medical après le rachat et le départ du CTO fondateur.</div>
+        <ul>
+          <li><strong>CI/CD Jenkins pour Delphi</strong> — Builds automatisés, déploiement vers serveurs de mise à jour</li>
+          <li><strong>Mise à jour automatique</strong> — Distribution OTA des nouvelles versions</li>
+          <li><strong>Transport email</strong> — Couche IMAP/SMTP native pour factures électroniques</li>
+          <li><strong>Maintenance moteur SESAM-Vitale</strong> — Évolutions réglementaires</li>
+        </ul>
+      </div>
+      
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Responsable Développements — <span class="job-company">CSK Santé (devenu MAIDIS)</span></span>
+          <span class="job-period">2001 – 2004</span>
+        </div>
+        <div class="job-context">Startup santé, transition vers le marché libéral. Stack C++ (hors Delphi).</div>
+      </div>
+      
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Chef de Projets / Développeur — <span class="job-company">MICROCONCEPT</span></span>
+          <span class="job-period">1986 – 2001</span>
+        </div>
+        <div class="job-context">Logiciel de gestion pour cabinets infirmiers</div>
+        <ul>
+          <li><strong>Migration Assembleur → Delphi</strong> — Réécriture complète (Delphi 2, puis 6)</li>
+          <li><strong>Composants VCL custom</strong> — Interface utilisateur spécifique métier</li>
+          <li><strong>Passerelle DOS/Windows</strong> — Appels DLL Windows depuis DOS (C + assembleur)</li>
+          <li><strong>Mode protégé 80486</strong> — Exploitation mémoire au-delà de 640 Ko</li>
+          <li><strong>Gestionnaire mémoire</strong> — Allocation dynamique avec GC en assembleur</li>
+          <li><strong>Client/serveur NetBios</strong> — Architecture réseau multi-postes</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Formation</h2>
+      <div class="formation-item">
+        <strong>DEA Informatique</strong> — Architecture des machines <span>| IFSIC Rennes | 1992-1993</span>
+      </div>
+      <div class="formation-item">
+        <strong>Maîtrise Architecture des Machines</strong> <span>| IFSIC Rennes | 1990-1992</span>
+      </div>
+      <div class="formation-item">
+        <strong>DUT Génie Électrique</strong> — Automatismes, major <span>| IUT Le Creusot | 1988-1990</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Points forts</h2>
+      <div class="points-grid">
+        <div><strong>30 ans Delphi</strong> — Delphi 2 à 12</div>
+        <div><strong>Open source</strong> — Librairies publiées</div>
+        <div><strong>Performance</strong> — Optimisation mémoire</div>
+        <div><strong>Legacy/moderne</strong> — Asm → Cloud</div>
+        <div><strong>Autonomie</strong> — Projets critiques</div>
+        <div><strong>Production</strong> — 13 ans 24/7</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Informations pratiques</h2>
+      <div class="infos-grid">
+        <div><strong>Disponibilité :</strong> 3 mois (négociable)</div>
+        <div><strong>Mobilité :</strong> Lyon/Grenoble (45 min) ou télétravail</div>
+        <div><strong>Langues :</strong> Français (natif), anglais technique</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Centres d'intérêt</h2>
+      <div class="interets">
+        Running (35 km/semaine) · Musculation · Véhicules de collection · Rallye VHC
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

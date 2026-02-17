@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Paul Leali - Directeur Technique / CTO</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 15mm;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.4;
+      color: #1a1a1a;
+      background: white;
+    }
+    
+    .container {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 0;
+    }
+    
+    /* En-tête */
+    header {
+      border-bottom: 2px solid #2c3e50;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    
+    h1 {
+      font-size: 22pt;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 2px;
+    }
+    
+    .subtitle {
+      font-size: 12pt;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    
+    .contact-info {
+      font-size: 9pt;
+      color: #444;
+    }
+    
+    .contact-info span {
+      margin-right: 14px;
+    }
+    
+    /* Sections */
+    section {
+      margin-bottom: 12px;
+    }
+    
+    h2 {
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: #2c3e50;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #bdc3c7;
+      padding-bottom: 3px;
+      margin-bottom: 8px;
+    }
+    
+    /* Profil */
+    .profil p {
+      text-align: justify;
+      margin-bottom: 4px;
+    }
+    
+    .aplayer {
+      font-style: italic;
+      color: #2c3e50;
+      margin-top: 6px;
+    }
+    
+    /* Atouts */
+    .atouts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 20px;
+      font-size: 9pt;
+    }
+    
+    .atout {
+      display: flex;
+      align-items: baseline;
+    }
+    
+    .atout-label {
+      font-weight: 600;
+      color: #2c3e50;
+      min-width: 140px;
+    }
+    
+    .atout-value {
+      color: #444;
+    }
+    
+    /* GitHub */
+    .github-projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    
+    .github-project {
+      background: #f8f9fa;
+      border-left: 3px solid #2c3e50;
+      padding: 6px 10px;
+    }
+    
+    .github-project h3 {
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 2px;
+    }
+    
+    .github-project p {
+      font-size: 8.5pt;
+      color: #555;
+    }
+    
+    /* Compétences */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 20px;
+    }
+    
+    .skill-category {
+      margin-bottom: 4px;
+    }
+    
+    .skill-category strong {
+      color: #2c3e50;
+      font-size: 9pt;
+    }
+    
+    .skill-category span {
+      font-size: 9pt;
+      color: #444;
+    }
+    
+    /* Expérience */
+    .job {
+      margin-bottom: 12px;
+    }
+    
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+    
+    .job-title {
+      font-weight: 600;
+      font-size: 10pt;
+    }
+    
+    .job-company {
+      color: #2c3e50;
+    }
+    
+    .job-period {
+      font-size: 9pt;
+      color: #666;
+    }
+    
+    .job-context {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 5px;
+      font-size: 9pt;
+    }
+    
+    .job ul {
+      margin-left: 14px;
+      margin-bottom: 3px;
+    }
+    
+    .job li {
+      margin-bottom: 2px;
+      font-size: 9pt;
+    }
+    
+    .job-stack {
+      font-size: 8.5pt;
+      color: #666;
+      margin-top: 3px;
+    }
+    
+    /* Formation */
+    .formation-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3px;
+    }
+    
+    .formation-item {
+      font-size: 9pt;
+    }
+    
+    .formation-item strong {
+      font-weight: 600;
+    }
+    
+    .formation-item span {
+      color: #666;
+    }
+    
+    /* Projet pro */
+    .projet-pro {
+      font-size: 9pt;
+    }
+    
+    .projet-pro p {
+      margin-bottom: 3px;
+    }
+    
+    /* Infos pratiques */
+    .infos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3px 20px;
+      font-size: 9pt;
+    }
+    
+    .infos-grid div strong {
+      color: #2c3e50;
+    }
+    
+    /* Centres d'intérêt */
+    .interets {
+      font-size: 9pt;
+      color: #444;
+    }
+
+    /* Référence */
+    .reference {
+      font-size: 8.5pt;
+      color: #555;
+      border-top: 1px solid #ddd;
+      padding-top: 6px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <header>
+      <h1>Paul Leali</h1>
+      <div class="subtitle">Directeur Technique · CTO · VP Engineering</div>
+      <div class="contact-info">
+        <span>Villefontaine (38)</span>
+        <span>06 61 46 96 82</span>
+        <span>p.leali@free.fr</span>
+        <span>linkedin.com/in/paul-leali-97a99b3</span>
+        <span>github.com/pleali</span>
+      </div>
+    </header>
+
+    <section class="profil">
+      <h2>Profil</h2>
+      <p>
+        Directeur Technique avec <strong>30 ans d'expérience</strong> dans l'édition logicielle, dont 13 ans chez un éditeur SaaS 
+        et 8 ans dans le secteur de la santé. Chez BUSS (RapidoBackup), j'ai repris et porté seul une plateforme critique 
+        pour <strong>900 clients et 300 To de données</strong>, en pilotant sa migration vers AWS.
+      </p>
+      <p>
+        Mon parcours m'a conduit à reprendre des responsabilités techniques après le départ de figures clés, 
+        en assurant la continuité tout en modernisant les plateformes existantes. Capable de faire le pont 
+        entre systèmes legacy et technologies actuelles.
+      </p>
+      <p class="aplayer">
+        Profil A-Player (AssessFirst) : adaptabilité hors du commun, apprentissage rapide, orienté action et résultats.
+      </p>
+    </section>
+
+    <section>
+      <h2>Atouts différenciants</h2>
+      <div class="atouts-grid">
+        <div class="atout"><span class="atout-label">• Polyvalence</span><span class="atout-value">Dev, infra, sécurité, web — tout en un</span></div>
+        <div class="atout"><span class="atout-label">• Pont legacy / moderne</span><span class="atout-value">Compétence rare et recherchée</span></div>
+        <div class="atout"><span class="atout-label">• Autonomie</span><span class="atout-value">Capable de porter seul un projet critique</span></div>
+        <div class="atout"><span class="atout-label">• Leadership technique</span><span class="atout-value">Direction d'équipe R&D, participation CODIR</span></div>
+        <div class="atout"><span class="atout-label">• 13 ans en production</span><span class="atout-value">RapidoBackup : disponibilité 24/7</span></div>
+        <div class="atout"><span class="atout-label">• Contributeur open source</span><span class="atout-value">Librairies publiées sur GitHub</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Projets Open Source — GitHub</h2>
+      <div class="github-projects">
+        <div class="github-project">
+          <h3>delphi-logging-facade</h3>
+          <p>Facade de logging inspirée de SLF4J — architecture interface-based, loggers hiérarchiques, configuration externe, thread-safe.</p>
+        </div>
+        <div class="github-project">
+          <h3>delphi-mqtt-client</h3>
+          <p>Client MQTT natif pour Delphi — protocole IoT, QoS levels, reconnexion automatique.</p>
+        </div>
+        <div class="github-project">
+          <h3>jsonrpc-mqtt</h3>
+          <p>Framework JSON-RPC 2.0 over MQTT (Java + Delphi) — communication peer-to-peer pour architectures distribuées.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Compétences techniques</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <strong>Cloud & DevOps : </strong>
+          <span>AWS (EC2, S3, RDS, EKS), Docker, Linux, Jenkins, Git</span>
+        </div>
+        <div class="skill-category">
+          <strong>Développement : </strong>
+          <span>Java, Spring Boot, React, TypeScript, Delphi, PHP, C/C++</span>
+        </div>
+        <div class="skill-category">
+          <strong>Data & Sécurité : </strong>
+          <span>PostgreSQL, MySQL, chiffrement, RGPD</span>
+        </div>
+        <div class="skill-category">
+          <strong>Domaines : </strong>
+          <span>Modernisation legacy, SESAM-Vitale, sauvegarde, IoT</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Expérience professionnelle</h2>
+      
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Directeur Technique — <span class="job-company">BUSS (RapidoBackup / RapidoCloud)</span></span>
+          <span class="job-period">2012 – 2025</span>
+        </div>
+        <div class="job-context">Reprise du périmètre technique suite au départ d'un associé fondateur. Plateforme SaaS critique.</div>
+        <ul>
+          <li><strong>Migration cloud</strong> — Pilotage complet colocation (Colt) → AWS (EC2, S3, RDS, EKS)</li>
+          <li><strong>Modernisation architecture</strong> — Évolution progressive du monolithe vers microservices</li>
+          <li><strong>Innovation stockage</strong> — Système de déduplication à blocs variables (recherche académique)</li>
+          <li><strong>Industrialisation</strong> — CI/CD Jenkins, conteneurisation Docker</li>
+          <li><strong>Responsabilité opérationnelle</strong> — Disponibilité 24/7, support client 7/7</li>
+        </ul>
+        <div class="job-stack">AWS · Java · Spring Boot · React · Delphi · Docker · PostgreSQL · Linux</div>
+      </div>
+      
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Responsable Pôle R&D — <span class="job-company">MICROCONCEPT (Groupe Softway Medical)</span></span>
+          <span class="job-period">2004 – 2012</span>
+        </div>
+        <div class="job-context">Rappelé par Softway Medical après le rachat de Microconcept et le départ du CTO fondateur.</div>
+        <ul>
+          <li><strong>Management</strong> — Direction d'une équipe de 4 développeurs</li>
+          <li><strong>CODIR</strong> — Participation aux décisions stratégiques post-acquisition</li>
+          <li><strong>Innovation</strong> — Préparation de la refonte du moteur SESAM-Vitale (Delphi → .Net/Java)</li>
+          <li><strong>CI/CD</strong> — Mise en place de Jenkins pour builds automatiques Delphi, déploiement automatisé</li>
+          <li><strong>Mise à jour automatique</strong> — Distribution OTA pour suivre les évolutions réglementaires</li>
+          <li><strong>Conformité</strong> — Passage des agréments SESAM-Vitale (audits lourds)</li>
+          <li><strong>Lobbying</strong> — Participation à un groupement d'éditeurs santé auprès de l'Assurance Maladie</li>
+        </ul>
+        <div class="job-stack">Java · Delphi · Assembleur · Jenkins · SVN</div>
+      </div>
+      
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Responsable Développements SESAM-Vitale — <span class="job-company">CSK Santé (devenu MAIDIS)</span></span>
+          <span class="job-period">2001 – 2004</span>
+        </div>
+        <div class="job-context">Startup santé. Enjeu critique : monter en agréments pour passer du secteur hospitalier au marché libéral.</div>
+        <ul>
+          <li><strong>Lead technique</strong> — Pilotage de la transition réglementaire SESAM-Vitale</li>
+          <li><strong>Conformité</strong> — Intégration des normes dans le logiciel existant</li>
+          <li><strong>Croissance</strong> — Ouverture du marché libéral, enjeu de viabilité commerciale</li>
+        </ul>
+        <div class="job-stack">C++ · MFC · SVN</div>
+      </div>
+      
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Chef de Projets puis Développeur — <span class="job-company">MICROCONCEPT</span></span>
+          <span class="job-period">1986 – 2001</span>
+        </div>
+        <div class="job-context">Débuts à 15 ans, à l'aube de la micro-informatique. 15 ans au cœur de l'informatique de santé.</div>
+        <ul>
+          <li><strong>Logiciel métier</strong> — Gestion de cabinets infirmiers, de l'assembleur à Delphi</li>
+          <li><strong>Mode protégé 80486</strong> — Exploitation mémoire au-delà de 640 Ko avant Windows</li>
+          <li><strong>Gestionnaire mémoire</strong> — Allocation dynamique avec garbage collector en assembleur</li>
+          <li><strong>Client/serveur NetBios</strong> — Architecture réseau pour logiciel métier et ERP interne</li>
+          <li><strong>Passerelle DOS/Windows</strong> — Appels DLL Windows depuis DOS pour API SESAM-Vitale</li>
+          <li><strong>Communication TPE</strong> — Factures SESAM-Vitale, certification nomade carte Vitale</li>
+          <li><strong>Pionnier SESAM-Vitale</strong> — Premières implémentations du standard</li>
+        </ul>
+        <div class="job-stack">Assembleur Z80/x86 · C · C++ · Delphi · Firebird</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Formation</h2>
+      <div class="formation-grid">
+        <div class="formation-item">
+          <strong>DEA Informatique</strong> — Architecture des machines <span>| IFSIC Rennes | 1992-1993</span>
+        </div>
+        <div class="formation-item">
+          <strong>Maîtrise Architecture des Machines</strong> <span>| IFSIC Rennes | 1990-1992</span>
+        </div>
+        <div class="formation-item">
+          <strong>DUT Génie Électrique</strong> — Option Automatismes, major de promotion <span>| IUT Le Creusot | 1988-1990</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Projet professionnel</h2>
+      <div class="projet-pro">
+        <p><strong>Poste recherché :</strong> CTO · Directeur Technique · VP Engineering</p>
+        <p><strong>Vision :</strong> Consolider expertise technique et leadership dans un environnement pérenne. Contribuer à la croissance d'une équipe solide.</p>
+        <p><strong>Critères :</strong> 1) Vision d'avenir 2) Lien humain 3) Projet technique 4) Salaire 5) Ambiance</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Informations pratiques</h2>
+      <div class="infos-grid">
+        <div><strong>Disponibilité :</strong> 3 mois (négociable)</div>
+        <div><strong>Mobilité :</strong> Lyon / Grenoble ou télétravail</div>
+        <div><strong>Langues :</strong> Français (natif), anglais technique</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Centres d'intérêt</h2>
+      <div class="interets">
+        Course à pied (35 km/semaine) · Musculation · Véhicules de collection · Rallye VHC
+      </div>
+    </section>
+
+    <div class="reference">
+      <strong>Référence :</strong> Marc Rotceig, CEO BUSS — 01 47 70 71 72 — contact@rapidobackup.com
+    </div>
+
+  </div>
+</body>
+</html>
